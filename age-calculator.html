@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Age Calculator — Free Tool</title>
+  <meta name="description" content="Simple age calculator. Enter your date of birth and get years, months and days." />
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1><a href="/">Android Tricks & Tools</a></h1>
+    <nav>
+      <a href="/top-10-android-tricks.html">Top Tricks</a>
+      <a href="/best-customisation-apps.html">Customization Apps</a>
+      <a href="/age-calculator.html">Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <article>
+    <h2>Age Calculator</h2>
+
+    <!-- Ad placeholder -->
+    <div class="ad-slot">[Ad placeholder — put ad code here]</div>
+
+    <p>Enter your birth date and press Calculate.</p>
+    <input type="date" id="dob" />
+    <button id="calcBtn">Calculate Age</button>
+    <div id="result"></div>
+
+    <script>
+      document.getElementById('calcBtn').addEventListener('click', function(){
+        var dob = new Date(document.getElementById('dob').value);
+        if (isNaN(dob)) {
+          document.getElementById('result').innerText = 'Please select a valid date.';
+          return;
+        }
+        var today = new Date();
+        var years = today.getFullYear() - dob.getFullYear();
+        var months = today.getMonth() - dob.getMonth();
+        var days = today.getDate() - dob.getDate();
+        if (days < 0) { months--; days += 30; }
+        if (months < 0) { years--; months += 12; }
+        document.getElementById('result').innerText = 'Your Age: ' + years + ' Years ' + months + ' Months ' + days + ' Days';
+      });
+    </script>
+
+  </article>
+</main>
+
+<footer class="wrap footer">
+  <p>&copy; Android Tricks & Tools</p>
+</footer>
+</body>
+</html>
